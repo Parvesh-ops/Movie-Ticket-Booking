@@ -1,111 +1,88 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-
+import { Search, Menu, X } from "lucide-react";
 
 const Header = () => {
-    return (
-        <header className="bg-[#1c1c1c] text-white px-10 py-3 flex items-center justify-between">
+  const [open, setOpen] = useState(false);
 
-            {/* Left Section */}
-            <div className="flex items-center gap-6">
-                <h1 className="text-2xl font-bold text-[#f84464]">
-                    MovieTime
-                </h1>
+  const navLinkClass = ({ isActive }) =>
+    ` px-4 py-2 rounded-full text-sm transition
+     ${
+       isActive
+         ? "bg-gray-800 text-white"
+         : "text-gray-400 hover:text-white"
+     }`;
 
-                <input
-                    type="text"
-                    placeholder="Search movies, cinemas..."
-                    className="w-72 px-4 py-2 rounded-md text-gray-400 outline-offset-2"
-                />
-            </div>
+  return (
+    <header className="fixed top-0 left-0 w-full z-5 backdrop-blur-md border-b border-gray-800">
+      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
 
-            {/* Right Section */}
-            <div className="flex items-center gap-6">
+        {/* Logo */}
+        <NavLink to="/" className="text-xl font-semibold text-white">
+          <span className="text-[#F84565]">Q</span>uickShow
+        </NavLink>
 
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex items-center gap-2 bg-[#14141] px-2 py-1 rounded-full">
+          <NavLink to="/" className={navLinkClass}>Home</NavLink>
+          <NavLink to="/movie" className={navLinkClass}>Movies</NavLink>
+          <NavLink to="/theatres" className={navLinkClass}>Theatres</NavLink>
+          <NavLink to="/releases" className={navLinkClass}>Releases</NavLink>
+        </nav>
 
-                <nav className="flex items-center gap-4 text-sm">
-                    <NavLink
-                        to="/"
-                        className={({ isActive }) =>
-                            `font-semibold transition
-       hover:underline hover:underline-offset-4
-       hover:decoration-[#f84464]
-       ${isActive
-                                ? "underline underline-offset-4 decoration-[#f84464] font-bold"
-                                : ""
-                            }`
-                        }
-                    >
-                        Home
-                    </NavLink>
+        {/* Right Section */}
+        <div className="flex items-center gap-4">
+          <button className="text-gray-400 hover:text-white transition">
+            <Search size={20} />
+          </button>
 
-                    <NavLink
-                        to="/movies"
-                        className={({ isActive }) =>
-                            `font-semibold transition
-       hover:underline hover:underline-offset-4
-       hover:decoration-[#f84464]
-       ${isActive
-                                ? "underline underline-offset-4 decoration-[#f84464] font-bold"
-                                : ""
-                            }`
-                        }
-                    >
-                        Movies
-                    </NavLink>
+          {/* Login (hide on very small if needed) */}
+          <button className="hidden sm:block bg-[#F84565] hover:bg-[#D63854] text-white text-sm px-5 py-2 rounded-full transition">
+            Log in
+          </button>
 
-                    <NavLink
-                        to="/theaters"
-                        className={({ isActive }) =>
-                            `font-semibold transition
-       hover:underline hover:underline-offset-4
-       hover:decoration-[#f84464]
-       ${isActive
-                                ? "underline underline-offset-4 decoration-[#f84464] font-bold"
-                                : ""
-                            }`
-                        }
-                    >
-                        Theaters
-                    </NavLink>
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden text-gray-400 hover:text-white"
+            onClick={() => setOpen(true)}
+          >
+            <Menu size={24} />
+          </button>
+        </div>
+      </div>
 
-                    <NavLink
-                        to="/favorites"
-                        className={({ isActive }) =>
-                            `font-semibold transition
-       hover:underline hover:underline-offset-4
-       hover:decoration-[#f84464]
-       ${isActive
-                                ? "underline underline-offset-4 decoration-[#f84464] font-bold"
-                                : ""
-                            }`
-                        }
-                    >
-                        Favorites
-                    </NavLink>
+      {/* Mobile Menu */}
+      {open && (
+        <div className="md:hidden bg-[#0b0b0b] border-t border-gray-800">
+          <div className="px-6 py-4 flex justify-between items-center">
+            <span className="text-white font-semibold">Menu</span>
+            <button onClick={() => setOpen(false)}>
+              <X className="text-gray-400 hover:text-white" />
+            </button>
+          </div>
 
-                    <NavLink
-                        to="/release"
-                        className={({ isActive }) =>
-                            `font-semibold transition
-       hover:underline hover:underline-offset-4
-       hover:decoration-[#f84464]
-       ${isActive
-                                ? "underline underline-offset-4 decoration-[#f84464] font-bold"
-                                : ""
-                            }`
-                        }
-                    >
-                        Release
-                    </NavLink>
-                </nav>
+          <nav className="px-6 pb-4 space-y-2">
+            <NavLink onClick={() => setOpen(false)} to="/" className={navLinkClass}>
+              Home
+            </NavLink>
+            <NavLink onClick={() => setOpen(false)} to="/movie" className={navLinkClass}>
+              Movies
+            </NavLink>
+            <NavLink onClick={() => setOpen(false)} to="/theatres" className={navLinkClass}>
+              Theatres
+            </NavLink>
+            <NavLink onClick={() => setOpen(false)} to="/releases" className={navLinkClass}>
+              Releases
+            </NavLink>
 
-                <button className="bg-[#f84464] px-5 py-2 rounded-md hover:bg-[#e03a57] transition">
-                    Login
-                </button>
-            </div>
-        </header>
-    );
+            <button className="w-full mt-3 bg-[#F84565] hover:bg-[#D63854] text-white py-2 rounded-lg">
+              Log in
+            </button>
+          </nav>
+        </div>
+      )}
+    </header>
+  );
 };
 
 export default Header;

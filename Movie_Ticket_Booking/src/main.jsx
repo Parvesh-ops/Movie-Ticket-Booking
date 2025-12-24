@@ -5,7 +5,12 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Layout from "./Layout";
 import Home from "./pages/Home";
-import Movies from "./pages/Movies";
+import Movie from "./pages/Movie";
+import MovieDetail from "./pages/MovieDetail";
+import SeatLayout from "./pages/SeatLayout";
+import MyBooking from "./pages/MyBooking";
+import Favorite from "./pages/Favorite";
+
 
 
 const router = createBrowserRouter([
@@ -17,11 +22,27 @@ const router = createBrowserRouter([
         index: true,   
         element: <Home />,
       },
-      
       {
-        path: 'Movies',   
-        element: <Movies />,
+        path: "/movie",
+        element:<Movie />
       },
+      {
+        path:"/movie/:id",
+        element:<MovieDetail />
+      },
+      {
+        path: "/movie/:id/:date",
+        element: <SeatLayout />,
+      },
+      {
+        path:"/my-booking",
+        element : <MyBooking />
+      },
+      {
+        path:"/favorite",
+        element : <Favorite />
+      },
+      
     ],
   },
 ]);
