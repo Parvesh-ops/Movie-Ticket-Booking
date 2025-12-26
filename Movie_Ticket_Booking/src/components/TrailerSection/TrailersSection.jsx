@@ -49,7 +49,7 @@ const TrailersSection = () => {
       </div>
 
       {/* Thumbnails */}
-      <div className="flex gap-4 mt-8 overflow-hidden scrollbar-hide">
+      <div className="flex gap-4 mt-8 mx-32 overflow-hidden scrollbar-hide">
         {dummyTrailers.map((trailer, idx) => (
           <img
             key={idx}

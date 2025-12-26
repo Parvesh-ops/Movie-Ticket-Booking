@@ -28,6 +28,7 @@ const Header = () => {
           <NavLink to="/movie" className={navLinkClass}>Movies</NavLink>
           <NavLink to="/theatres" className={navLinkClass}>Theatres</NavLink>
           <NavLink to="/releases" className={navLinkClass}>Releases</NavLink>
+          <NavLink to="/favorite" className={navLinkClass}>Favorite</NavLink>
         </nav>
 
         {/* Right Section */}
@@ -73,6 +74,9 @@ const Header = () => {
             </NavLink>
             <NavLink onClick={() => setOpen(false)} to="/releases" className={navLinkClass}>
               Releases
+            </NavLink>
+            <NavLink onClick={() => setOpen(false)} to="/favorite" className={navLinkClass}>
+              Favorite
             </NavLink>
 
             <button className="w-full mt-3 bg-[#F84565] hover:bg-[#D63854] text-white py-2 rounded-lg">

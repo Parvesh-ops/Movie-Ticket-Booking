@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className=" text-gray-400 mt-20">
+    <footer className=" text-gray-400">
       <div className="max-w-9xl mx-auto px-5 py-16 grid grid-cols-1 md:grid-cols-3 gap-14">
         
         {/* Brand */}
