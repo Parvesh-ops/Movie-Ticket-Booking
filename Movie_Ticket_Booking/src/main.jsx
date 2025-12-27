@@ -10,7 +10,7 @@ import MovieDetail from "./pages/MovieDetail";
 import SeatLayout from "./pages/SeatLayout";
 import MyBooking from "./pages/MyBooking";
 import Favorite from "./pages/Favorite";
-
+import DateSelect from "./components/DateSelect/DateSelect";
 
 
 const router = createBrowserRouter([
@@ -41,6 +41,10 @@ const router = createBrowserRouter([
       {
         path:"/favorite",
         element : <Favorite />
+      },
+      {
+        path:"/date-select",
+        element : <DateSelect />
       },
       
     ],

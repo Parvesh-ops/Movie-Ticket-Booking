@@ -7,7 +7,7 @@ const Movie = () => {
     <div className='relative my-20 mb-60 px-6 md:px-16 llg:px-40 xl:px-44
     overflow-hidden min-h-[80vh]'>
       <h1 className='text-lg font-medium my-4'>Now Showing</h1>
-      <div className='flex flex-wrap max-sm:justify-center gap-8'>
+      <div className='w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-16'>
         {dummyShowsData.map(movie => (
           <MovieCard key={movie._id} movie={movie} />
         ))}

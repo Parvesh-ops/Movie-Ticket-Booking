@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { dummyShowsData, dummyDateTimeData } from '../assets/assets'
 import { Heart, PlayCircle, StarIcon } from 'lucide-react'
 import timeformat from '../../lib/timeformat'
+import DateSelect from '../components/DateSelect/DateSelect'
+import MovieCard from '../components/MovieCard/MovieCard'
 
 const MovieDetail = () => {
+  const navigate = useNavigate()
   const { id } = useParams()
   const [show, setShow] = useState(null)
 
@@ -82,7 +85,8 @@ const MovieDetail = () => {
               Watch Trailer
             </button>
 
-            <button className="px-6 py-2.5 bg-[#f84565] rounded-xl font-medium hover:bg-[#f83256] transition">
+            <button
+              className="px-6 py-2.5 bg-[#f84565] rounded-xl font-medium hover:bg-[#f83256] transition">
               Buy Tickets
             </button>
 
@@ -101,8 +105,8 @@ const MovieDetail = () => {
         </h2>
 
         <div className="flex gap-6 overflow-hidden pb-2">
-          {movie.casts?.map((cast, index) => (
-            <div key={index} className="flex flex-col items-center min-w-[80px]">
+          {movie.casts.slice(0, 12)?.map((cast, index) => (
+            <div key={index} className="flex flex-col items-center min-w-20">
               <img
                 src={cast.profile_path}
                 alt={cast.name}
@@ -117,7 +121,30 @@ const MovieDetail = () => {
         </div>
       </div>
 
+      {/* DATE SELECTOR */}
+      <DateSelect dateTime={show.dateTime} id={movie._id} />
+
+      {/* SIMILAR MOVIES - TO BE IMPLEMENTED */}
+      <p className='text-lg font-medium mt-20 mb-8'>You May Also Like</p>
+      <div className='w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-16'>
+        {/* Similar movies component can be added here */}
+        {
+          dummyShowsData.slice(0, 4).map((movie,index) => (
+            <MovieCard key={index} movie={movie} />
+          ))
+        }
+
+      </div>
+
+<div className='flex justify-center mt-20'>
+<button
+onClick={()=>{navigate('/movie'); window.scrollTo(0,0)}}
+className='px-6 py-3 bg-[#f84565] rounded-full font-semibold hover:bg-[#f8244b] text-white transition-shadow shadow-lg'>
+  Show More
+</button>
+  </div>      
     </div>
+
   )
 }
 
