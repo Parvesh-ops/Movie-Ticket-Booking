@@ -22,11 +22,9 @@ const dummyTrailers = [
 
 const TrailersSection = () => {
   const [currentTrailer, setCurrentTrailer] = useState(dummyTrailers[0]);
-  const [isPlaying, setIsPlaying] = useState(true); // autoplay by default
 
   const handleThumbnailClick = (trailer) => {
     setCurrentTrailer(trailer);
-    setIsPlaying(true); // autoplay when thumbnail clicked
   };
 
   return (
@@ -41,7 +39,6 @@ const TrailersSection = () => {
         <ReactPlayer
           url={currentTrailer.videoUrl}
           controls={true}
-          playing={isPlaying}  // autoplay
           width="100%"
           height="500px"
           className="rounded-lg mt-6"
