@@ -4,7 +4,7 @@ import { assets, dummyDateTimeData, dummyShowsData } from '../assets/assets'
 import { ArrowRightIcon, ClockIcon } from 'lucide-react'
 import isoTimeformat from '../../lib/isoTimeformat.js'
 
-const rows = ["A","B","C","D","E","F","G"] // Seat rows
+const rows = ["A", "B", "C", "D", "E", "F", "G"] // Seat rows
 const seatsPerRow = 18 // Seats per row
 
 const SeatLayout = () => {
@@ -58,9 +58,8 @@ const SeatLayout = () => {
             <div
               key={item.time}
               onClick={() => setSelectedTime(item)}
-              className={`flex items-center gap-2 px-6 py-2 w-max rounded-r-md cursor-pointer transition ${
-                selectedTime?.time === item.time ? "bg-[#F84565] text-white" : "hover:bg-primary/20 text-white"
-              }`}
+              className={`flex items-center gap-2 px-6 py-2 w-max rounded-r-md cursor-pointer transition ${selectedTime?.time === item.time ? "bg-[#F84565] text-white" : "hover:bg-primary/20 text-white"
+                }`}
             >
               <ClockIcon className='w-4 h-4' />
               <p className='text-sm'>{isoTimeformat(item.time)}</p>
@@ -86,9 +85,8 @@ const SeatLayout = () => {
                   <div
                     key={seatId}
                     onClick={() => toggleSeat(seatId)}
-                    className={`w-7 h-7 border border-gray-600 rounded-sm cursor-pointer flex items-center justify-center text-xs transition ${
-                      isSelected ? 'bg-[#F84565] text-white' : 'bg-[#2e1e24] text-gray-400 hover:bg-[#72263d]'
-                    }`}
+                    className={`w-7 h-7 border border-gray-600 rounded-sm cursor-pointer flex items-center justify-center text-xs transition ${isSelected ? 'bg-[#F84565] text-white' : 'bg-[#2e1e24] text-gray-400 hover:bg-[#72263d]'
+                      }`}
                   >
                     {seatIndex + 1}
                   </div>
@@ -108,14 +106,17 @@ const SeatLayout = () => {
           </button>
         )} */}
 
-       { selectedSeats.length > 0 && (
-        <button onClick={()=>navigate('/my-bookings')}
-        className='flex items-center gap-1 px-10 py-3 text-sm mt-6 bg-[#F84565] text-white  rounded-full hover:bg-[#fa2e53] transition font-medium cursor-pointer
-        active:scale-95'>
-          Proced to Checkout
-          <ArrowRightIcon strokeWidth={3} className='w-4 h-4'/>
-        </button>
+        {selectedSeats.length > 0 && (
+          <button
+            onClick={() => navigate('/my-booking')}
+            className='flex items-center gap-1 px-10 py-3 text-sm mt-6 bg-[#F84565] text-white rounded-full hover:bg-[#fa2e53] transition font-medium cursor-pointer active:scale-95'
+          >
+            Proceed to Checkout
+            <ArrowRightIcon strokeWidth={3} className='w-4 h-4' />
+          </button>
+
         )}
+
       </div>
 
     </div>
