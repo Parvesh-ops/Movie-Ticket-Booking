@@ -10,11 +10,7 @@ const isoTimeformat = (dateTime) => {
     minute: '2-digit',
   });
 
-  return (
-    <div>
-      {localTime}
-    </div>
-  );
+  return localTime
 };
 
 export default isoTimeformat;
