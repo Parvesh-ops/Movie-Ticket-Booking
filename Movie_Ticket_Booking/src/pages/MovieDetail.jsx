@@ -11,6 +11,7 @@ const MovieDetail = () => {
   const { id } = useParams()
   const [show, setShow] = useState(null)
 
+
   useEffect(() => {
     const movie = dummyShowsData.find(m => m._id === id)
     if (!movie) return
@@ -80,10 +81,14 @@ const MovieDetail = () => {
           {/* ACTION BUTTONS */}
           <div className="flex flex-wrap items-center gap-4 mt-4">
 
-            <button className="flex items-center gap-2 px-5 py-2.5 border border-gray-600 rounded-xl hover:bg-white hover:text-black transition">
+            <button
+              onClick={() => window.open(movie.trailer, "_blank")}
+              className="flex items-center gap-2 px-5 py-2.5 border border-gray-600 rounded-xl hover:bg-white hover:text-black transition"
+            >
               <PlayCircle size={18} />
               Watch Trailer
             </button>
+
 
             <button
               className="px-6 py-2.5 bg-[#f84565] rounded-xl font-medium hover:bg-[#f83256] transition">
@@ -129,20 +134,20 @@ const MovieDetail = () => {
       <div className='w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-16'>
         {/* Similar movies component can be added here */}
         {
-          dummyShowsData.slice(0, 4).map((movie,index) => (
+          dummyShowsData.slice(0, 4).map((movie, index) => (
             <MovieCard key={index} movie={movie} />
           ))
         }
 
       </div>
 
-<div className='flex justify-center mt-20'>
-<button
-onClick={()=>{navigate('/movie'); window.scrollTo(0,0)}}
-className='px-6 py-3 bg-[#f84565] rounded-full font-semibold hover:bg-[#f8244b] text-white transition-shadow shadow-lg'>
-  Show More
-</button>
-  </div>      
+      <div className='flex justify-center mt-20'>
+        <button
+          onClick={() => { navigate('/movie'); window.scrollTo(0, 0) }}
+          className='px-6 py-3 bg-[#f84565] rounded-full font-semibold hover:bg-[#f8244b] text-white transition-shadow shadow-lg'>
+          Show More
+        </button>
+      </div>
     </div>
 
   )
