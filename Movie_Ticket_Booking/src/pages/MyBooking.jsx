@@ -1,64 +1,101 @@
-import React, { useState, useEffect } from 'react';
-import { dummyBookingData } from '../assets/assets';
-import timeformat from '../../lib/timeformat';
-import { dateFormat } from '../../lib/dateFormat';
+import React, { useEffect, useState } from 'react'
+import { dummyBookingData } from '../assets/assets'
+import timeformat from '../../lib/timeformat'
+import { dateFormat } from '../../lib/dateFormat'
 
 const MyBooking = () => {
-  const currency = import.meta.env.VITE_CURRENCY;
+  const currency = import.meta.env.VITE_CURRENCY
 
-  const [bookings, setBookings] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  const getMyBookings = async () => {
-    // Simulate API fetch
-    setBookings(dummyBookingData);
-    setIsLoading(false);
-  };
+  const [bookings, setBookings] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    getMyBookings();
-  }, []);
+    setBookings(dummyBookingData)
+    setIsLoading(false)
+  }, [])
 
   if (isLoading) {
-    return <p className="text-center mt-10">Loading bookings...</p>;
+    return (
+      <div className="min-h-screen flex items-center justify-center text-gray-400">
+        Loading bookings...
+      </div>
+    )
   }
 
   if (bookings.length === 0) {
-    return <p className="text-center mt-10">You have no bookings yet.</p>;
+    return (
+      <div className="min-h-screen flex items-center justify-center text-gray-400">
+        You have no bookings yet.
+      </div>
+    )
   }
 
   return (
-    <div className="relative px-6 md:px-16 lg:px-40 pt-30 md:pt-40 min-h-[80vh]">
-      <h1 className="text-lg font-semibold mb-4">My Bookings</h1>
+    <div className="min-h-screen bg-black text-white px-6 md:px-16 lg:px-40 pt-36">
+      <h1 className="text-xl font-semibold mb-6">My Bookings</h1>
 
-      {bookings.map((item, index) => (
-        <div
-          key={index}
-          className="flex flex-col md:flex-row justify-between bg-primary/8 border-primary/20 rounded-lg mt-4 max-w-3xl"
-        >
-          <div className="flex flex-col md:flex-row">
-            <img
-              src={item.show.movie.poster_path}
-              alt={item.show.movie.title}
-              className="md:max-w-45 aspect-video h-auto object-cover object-bottom rounded"
-            />
-            <div className="flex flex-col p-4">
-              <p className="text-lg font-semibold">{item.show.movie.title}</p>
+      <div className="flex flex-col gap-6 max-w-5xl">
+        {bookings.map((item, index) => (
+          <div
+            key={index}
+            className="flex flex-col md:flex-row justify-between rounded-xl overflow-hidden
+            bg-linear-to-r from-[#1a0b10] to-[#2a0f18] border border-white/10"
+          >
+            {/* LEFT */}
+            <div className="flex">
+              <img
+                src={item.show.movie.poster_path}
+                alt={item.show.movie.title}
+                className="w-28 md:w-36 h-full object-cover"
+              />
 
-              <p className="text-gray-400 text-sm mt-2">
-                {item.show.movie.runtime ? timeformat(item.show.movie.runtime) : 'Runtime not available'}
-              </p>
+              <div className="p-4 flex flex-col">
+                <p className="text-lg font-semibold">
+                  {item.show.movie.title}
+                </p>
 
+                <p className="text-sm text-gray-400 mt-1">
+                  {item.show.movie.runtime
+                    ? timeformat(item.show.movie.runtime)
+                    : 'Runtime not available'}
+                </p>
 
-              <p className="text-gray-400 text-sm mt-auto">
-                {dateFormat(item.show.showDateTime)}
-              </p>
+                <p className="text-sm text-gray-400 mt-auto">
+                  {dateFormat(item.show.showDateTime)}
+                </p>
+              </div>
+            </div>
+
+            {/* RIGHT */}
+            <div className="p-4 flex flex-col justify-between text-right">
+              <div>
+                <p className="text-2xl font-semibold">
+                  {currency}{item.amount}
+                </p>
+
+                {!item.isPaid && (
+                  <button className="mt-2 px-4 py-1.5 bg-[#f84565] rounded-full text-sm font-medium hover:bg-[#f83256] transition">
+                    Pay Now
+                  </button>
+                )}
+              </div>
+
+              <div className="text-sm text-gray-300 mt-4">
+                <p>
+                  <span className="text-gray-400">Total Tickets:</span>{' '}
+                  {item.bookedSeats.length}
+                </p>
+                <p>
+                  <span className="text-gray-400">Seat Number:</span>{' '}
+                  {item.bookedSeats.join(', ')}
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
-  );
-};
+  )
+}
 
-export default MyBooking;
+export default MyBooking
