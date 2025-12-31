@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { dummyBookingData } from '../assets/assets'
 import timeformat from '../../lib/timeformat'
 import { dateFormat } from '../../lib/dateFormat'
@@ -10,6 +10,7 @@ const MyBooking = () => {
   const [bookings, setBookings] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const movieId = location?.state?.movieId
@@ -94,11 +95,12 @@ const MyBooking = () => {
             <div className="p-4 flex flex-col justify-between text-right">
               <div>
                 <p className="text-2xl font-semibold">
-                  {currency}{item.amount}
+                ${currency}{item.amount }
                 </p>
 
                 {!item.isPaid && (
-                  <button className="mt-2 px-4 py-1.5 bg-[#f84565] rounded-full text-sm font-medium hover:bg-[#f83256] transition">
+                  <button onClick={() => navigate('/pay-now', { state: item })}
+                    className="mt-2 px-4 py-1.5 bg-[#f84565] rounded-full text-sm font-medium hover:bg-[#f83256] transition">
                     Pay Now
                   </button>
                 )}

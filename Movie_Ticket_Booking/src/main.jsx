@@ -11,6 +11,7 @@ import SeatLayout from "./pages/SeatLayout";
 import MyBooking from "./pages/MyBooking";
 import Favorite from "./pages/Favorite";
 import DateSelect from "./components/DateSelect/DateSelect";
+import PayNow from "./pages/payNow";
 
 
 const router = createBrowserRouter([
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
       {
         path:"/date-select",
         element : <DateSelect />
+      },
+      {
+        path:"/pay-now",
+        element : <PayNow />
       },
     
       
