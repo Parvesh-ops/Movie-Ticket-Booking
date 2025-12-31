@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import { dummyBookingData } from '../assets/assets'
 import timeformat from '../../lib/timeformat'
 import { dateFormat } from '../../lib/dateFormat'
@@ -8,11 +9,34 @@ const MyBooking = () => {
 
   const [bookings, setBookings] = useState([])
   const [isLoading, setIsLoading] = useState(true)
+  const location = useLocation()
 
   useEffect(() => {
-    setBookings(dummyBookingData)
+    const movieId = location?.state?.movieId
+
+    // merge persisted bookings from localStorage with dummy data
+    let persisted = []
+    try {
+      persisted = JSON.parse(localStorage.getItem('bookings') || '[]')
+    } catch (e) {
+      persisted = []
+    }
+
+    const all = [...dummyBookingData, ...persisted]
+
+    if (movieId) {
+      const filtered = all.filter(b => {
+        const bm = b?.show?.movie
+        return bm?._id === movieId || (bm?.id && bm.id.toString() === movieId.toString()) || b?.show?._id === movieId
+      })
+
+      setBookings(filtered)
+    } else {
+      setBookings(all)
+    }
+
     setIsLoading(false)
-  }, [])
+  }, [location?.state?.movieId])
 
   if (isLoading) {
     return (

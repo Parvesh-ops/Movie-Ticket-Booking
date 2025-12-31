@@ -103,7 +103,34 @@ const SeatLayout = () => {
 
         {selectedSeats.length > 0 && (
           <button
-            onClick={() => navigate('/my-booking')}
+            onClick={() => {
+              const ticketPrice = 49
+              const chosenTime = selectedTime || (show.dateTime[date] && show.dateTime[date][0])
+
+              const booking = {
+                _id: Date.now().toString(),
+                user: { name: 'You' },
+                show: {
+                  _id: show.movie._id || show.movie.id,
+                  movie: show.movie,
+                  showDateTime: chosenTime?.time || null,
+                  showPrice: ticketPrice,
+                },
+                amount: ticketPrice * selectedSeats.length,
+                bookedSeats: selectedSeats,
+                isPaid: false,
+              }
+
+              try {
+                const existing = JSON.parse(localStorage.getItem('bookings') || '[]')
+                existing.push(booking)
+                localStorage.setItem('bookings', JSON.stringify(existing))
+              } catch (e) {
+                console.error('Failed to save booking', e)
+              }
+
+              navigate('/my-booking', { state: { movieId: show.movie._id } })
+            }}
             className='flex items-center gap-1 px-10 py-3 text-sm mt-6 bg-[#F84565] text-white rounded-full hover:bg-[#fa2e53] transition font-medium cursor-pointer active:scale-95'
           >
             Proceed to Checkout

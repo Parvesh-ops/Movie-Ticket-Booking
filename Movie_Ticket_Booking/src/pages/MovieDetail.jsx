@@ -91,6 +91,7 @@ const MovieDetail = () => {
 
 
             <button
+              onClick={() => navigate(`/movie/${movie._id}/${Object.keys(dummyDateTimeData)[0]}`)}
               className="px-6 py-2.5 bg-[#f84565] rounded-xl font-medium hover:bg-[#f83256] transition">
               Buy Tickets
             </button>
