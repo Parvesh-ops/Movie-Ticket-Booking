@@ -13,6 +13,11 @@ import Favorite from "./pages/Favorite";
 import DateSelect from "./components/DateSelect/DateSelect";
 import PayNow from "./pages/payNow";
 
+ {/* Dashboard Routes */}
+import DashboardLayout from "./dashboard/DashboardLayout";
+import DashboardHome from "./dashboard/dashboardHome";
+
+
 
 const router = createBrowserRouter([
   {
@@ -51,10 +56,17 @@ const router = createBrowserRouter([
         path:"/pay-now",
         element : <PayNow />
       },
-    
-      
     ],
   },
+
+   //Dashboard
+   {
+    path:'/adminDashboard',
+    element:<DashboardLayout />,
+    children:[
+      {index:true, element:<DashboardHome />},
+    ]
+   }
 ]);
 
 createRoot(document.getElementById("root")).render(
