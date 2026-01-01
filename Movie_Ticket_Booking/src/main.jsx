@@ -13,9 +13,13 @@ import Favorite from "./pages/Favorite";
 import DateSelect from "./components/DateSelect/DateSelect";
 import PayNow from "./pages/payNow";
 
- {/* Dashboard Routes */}
+// Dashboard Routes
 import DashboardLayout from "./dashboard/DashboardLayout";
 import DashboardHome from "./dashboard/dashboardHome";
+import AddShows from "./dashboard/AddShows";
+import ListShows from "./dashboard/ListShows";
+import ListBooking from "./dashboard/ListBooking";
+
 
 
 
@@ -24,49 +28,30 @@ const router = createBrowserRouter([
     path: "/",
     element: <Layout />,
     children: [
-      {
-        index: true,   
-        element: <Home />,
-      },
-      {
-        path: "/movie",
-        element:<Movie />
-      },
-      {
-        path:"/movie/:id",
-        element:<MovieDetail />
-      },
-      {
-        path: "/movie/:id/:date",
-        element: <SeatLayout />,
-      },
-      {
-        path:"/my-booking",
-        element : <MyBooking />
-      },
-      {
-        path:"/favorite",
-        element : <Favorite />
-      },
-      {
-        path:"/date-select",
-        element : <DateSelect />
-      },
-      {
-        path:"/pay-now",
-        element : <PayNow />
-      },
+      { index: true, element: <Home /> },
+      { path: "movie", element: <Movie /> },
+      { path: "movie/:id", element: <MovieDetail /> },
+      { path: "movie/:id/:date", element: <SeatLayout /> },
+      { path: "my-booking", element: <MyBooking /> },
+      { path: "favorite", element: <Favorite /> },
+      { path: "date-select", element: <DateSelect /> },
+      { path: "pay-now", element: <PayNow /> },
+      { path: "*", element: <h1 className="min-h mt-50 flex justify-center text-center ">404 – Page Not Found</h1> },
     ],
   },
 
-   //Dashboard
-   {
-    path:'/adminDashboard',
-    element:<DashboardLayout />,
-    children:[
-      {index:true, element:<DashboardHome />},
-    ]
-   }
+  // Dashboard Routes
+ {
+  path: "/adminDashboard",
+  element: <DashboardLayout />,
+  children: [
+    { index: true, element: <DashboardHome /> },
+    { path: "add-shows", element: <AddShows /> },
+    { path: "list-shows", element: <ListShows /> },
+    { path: "bookings", element: <ListBooking /> },
+  ],
+}
+
 ]);
 
 createRoot(document.getElementById("root")).render(
