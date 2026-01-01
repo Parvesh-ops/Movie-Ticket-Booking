@@ -249,6 +249,123 @@ export const dummyShowsData = [
         vote_count: 23569,
         runtime: 127,
         trailer: "https://www.youtube.com/watch?v=-sAOWhvheK8"
+    },
+    {
+        _id: "112233",
+        id: 112233,
+        title: "John Wick: Chapter 5",
+        overview:
+            "John Wick faces his most dangerous enemies yet in the final chapter.",
+        poster_path:
+            "https://i.ytimg.com/vi/HOt0NJ_-gQ4/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCsTiVR4C6hsIDfT6cxh0fikgxn1A",
+        backdrop_path:
+            "https://i.ytimg.com/vi/HOt0NJ_-gQ4/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCsTiVR4C6hsIDfT6cxh0fikgxn1A",
+        genres: [
+            { id: 28, name: "Action" },
+            { id: 53, name: "Thriller" }
+        ],
+        casts: dummyCastsData,
+        release_date: "2026-06-10",
+        original_language: "en",
+        tagline: "Every action has consequences.",
+        vote_average: 8.2,
+        vote_count: 12000,
+        runtime: 145,
+        trailer: "https://www.youtube.com/watch?v=nAxQ01JJr5c"
+    },
+    {
+        _id: "999888",
+        id: 999888,
+        title: "FAST & FURIOUS 11 (2026)",
+        overview: "As Dante's punishment begins, Dom forms an unlikely alliance with Ronaldo for one final, all-out war to protect his family.",
+        poster_path: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTefWiPD4pVodal1YkwhcGChW0DG1NHrJUyew&s",
+        backdrop_path: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTefWiPD4pVodal1YkwhcGChW0DG1NHrJUyew&s",
+        genres: [
+            { id: 28, name: "Action" },
+            { id: 12, name: "Adventure" }
+        ],
+        casts: dummyCastsData,
+        release_date: "2026-04-07",
+        original_language: "en",
+        tagline: "One last ride.",
+        vote_average: 7.9,
+        vote_count: 21000,
+        runtime: 150,
+        trailer: "https://www.youtube.com/watch?v=vWVSOj_k1QA"
+    },
+    {
+        _id: "101010",
+        id: 101010,
+        title: "Deadpool & Wolverine",
+        overview:
+            "Deadpool teams up with Wolverine in a multiverse-shattering adventure full of chaos, humor, and brutal action.",
+        poster_path:
+            "https://m.media-amazon.com/images/M/MV5BOTcxNzNmMzItYTk0ZC00YmM4LThhYTQtOTFhYzE4YjNkODhmXkEyXkFqcGdeQWpnYW1i._V1_QL75_UY281_CR0,0,500,281_.jpg",
+        backdrop_path:
+            "https://m.media-amazon.com/images/M/MV5BOTcxNzNmMzItYTk0ZC00YmM4LThhYTQtOTFhYzE4YjNkODhmXkEyXkFqcGdeQWpnYW1i._V1_QL75_UY281_CR0,0,500,281_.jpg",
+        genres: [
+            { id: 28, name: "Action" },
+            { id: 35, name: "Comedy" },
+            { id: 878, name: "Science Fiction" }
+        ],
+        casts: dummyCastsData,
+        release_date: "2024-07-26",
+        original_language: "en",
+        tagline: "Everyone needs a partner.",
+        vote_average: 8.0,
+        vote_count: 32000,
+        runtime: 130,
+        trailer: "https://www.youtube.com/watch?v=73_1biulkYk"
+    },
+
+    {
+        _id: "202020",
+        id: 202020,
+        title: "Avatar: Fire and Ash ",
+        overview:
+            "Jake Sully and Neytiri face a new threat as Pandora’s future hangs in the balance.",
+        poster_path:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_m6Ril-dDwJr7A2MEPaXykqfou5JOcRnsSA&s",
+        backdrop_path:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_m6Ril-dDwJr7A2MEPaXykqfou5JOcRnsSA&s",
+        genres: [
+            { id: 12, name: "Adventure" },
+            { id: 878, name: "Science Fiction" },
+            { id: 14, name: "Fantasy" }
+        ],
+        casts: dummyCastsData,
+        release_date: "2026-12-18",
+        original_language: "en",
+        tagline: "Protect the future of Pandora.",
+        vote_average: 8.3,
+        vote_count: 18000,
+        runtime: 185,
+        trailer: "https://www.youtube.com/watch?v=nb_fFj_0rq8"
+    },
+
+    {
+        _id: "303030",
+        id: 303030,
+        title: "The Batman: Part II",
+        overview:
+            "Batman uncovers deeper corruption in Gotham while facing a new, ruthless enemy.",
+        poster_path:
+            "https://m.media-amazon.com/images/M/MV5BMTU2NzhiYWUtYThlZi00OWIyLTk3YWEtZjY3NmJjOTZiZDAyXkEyXkFqcGc@._V1_.jpg",
+        backdrop_path:
+            "https://m.media-amazon.com/images/M/MV5BMTU2NzhiYWUtYThlZi00OWIyLTk3YWEtZjY3NmJjOTZiZDAyXkEyXkFqcGc@._V1_.jpg",
+        genres: [
+            { id: 80, name: "Crime" },
+            { id: 18, name: "Drama" },
+            { id: 53, name: "Thriller" }
+        ],
+        casts: dummyCastsData,
+        release_date: "2025-10-03",
+        original_language: "en",
+        tagline: "The night gets darker.",
+        vote_average: 8.1,
+        vote_count: 22000,
+        runtime: 155,
+        trailer: "https://www.youtube.com/watch?v=T7_zMl_ZhdQ"
     }
 ]
 
