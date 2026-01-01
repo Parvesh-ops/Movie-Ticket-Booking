@@ -12,6 +12,7 @@ import MyBooking from "./pages/MyBooking";
 import Favorite from "./pages/Favorite";
 import DateSelect from "./components/DateSelect/DateSelect";
 import PayNow from "./pages/payNow";
+import Theaters from "./pages/Theaters";
 
 // Dashboard Routes
 import DashboardLayout from "./dashboard/DashboardLayout";
@@ -32,6 +33,7 @@ const router = createBrowserRouter([
       { path: "movie", element: <Movie /> },
       { path: "movie/:id", element: <MovieDetail /> },
       { path: "movie/:id/:date", element: <SeatLayout /> },
+      { path: "theatres", element: <Theaters /> },
       { path: "my-booking", element: <MyBooking /> },
       { path: "favorite", element: <Favorite /> },
       { path: "date-select", element: <DateSelect /> },
@@ -41,16 +43,16 @@ const router = createBrowserRouter([
   },
 
   // Dashboard Routes
- {
-  path: "/adminDashboard",
-  element: <DashboardLayout />,
-  children: [
-    { index: true, element: <DashboardHome /> },
-    { path: "add-shows", element: <AddShows /> },
-    { path: "list-shows", element: <ListShows /> },
-    { path: "bookings", element: <ListBooking /> },
-  ],
-}
+  {
+    path: "/adminDashboard",
+    element: <DashboardLayout />,
+    children: [
+      { index: true, element: <DashboardHome /> },
+      { path: "add-shows", element: <AddShows /> },
+      { path: "list-shows", element: <ListShows /> },
+      { path: "bookings", element: <ListBooking /> },
+    ],
+  }
 
 ]);
 

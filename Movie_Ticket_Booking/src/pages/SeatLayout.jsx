@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { assets, dummyDateTimeData, dummyShowsData } from '../assets/assets';
 import { ArrowRightIcon, ClockIcon } from 'lucide-react';
 import isoTimeformat from '../../lib/isoTimeformat.js';
@@ -14,6 +14,7 @@ const SeatLayout = () => {
   const [show, setShow] = useState(null);
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const getShow = async () => {
     const showData = dummyShowsData.find(show => show.id.toString() === id);
@@ -30,6 +31,21 @@ const SeatLayout = () => {
   useEffect(() => {
     getShow();
   }, [id, date]);
+
+  // If route contains ?time=..., preselect that show time once show data loads
+  useEffect(() => {
+    if (!show) return;
+    try {
+      const params = new URLSearchParams(location.search);
+      const timeParam = params.get('time');
+      if (timeParam && show.dateTime && show.dateTime[date]) {
+        const matched = show.dateTime[date].find((item) => item.time === decodeURIComponent(timeParam));
+        if (matched) setSelectedTime(matched);
+      }
+    } catch (e) {
+      console.error('Failed to parse search params', e);
+    }
+  }, [show, date, location.search]);
 
   const toggleSeat = (seatId) => {
     if (selectedSeats.includes(seatId)) {
