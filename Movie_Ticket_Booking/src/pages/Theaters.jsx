@@ -39,13 +39,13 @@ const Theaters = () => {
   const { id, date } = useParams(); // movie id & selected date
 
   return (
-    <div className="min-h-screen bg-black text-white px-6 md:px-16 lg:px-40 py-16">
+    <div className="min-h-screen text-white px-6 md:px-16 lg:px-40 py-16">
       
       <h1 className="text-2xl font-semibold mb-8">
         Select Theater & Showtime
       </h1>
 
-      <div className="flex flex-col gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {dummyTheatersData.map(theater => (
           <div
             key={theater.id}
