@@ -133,6 +133,9 @@ const PayNow = () => {
   const time = booking.show?.showDateTime || booking.time || null;
   const amount = booking.amount || booking.show?.showPrice || 0;
 
+  // determine theater for display
+  const theater = booking.theater || (booking.theaterId ? dummyTheatersData.find(t => t.id === booking.theaterId) : null);
+
   return (
     <div className=" min-h-screen mt-18 text-white px-6 md:px-16 lg:px-40 py-12">
       <h1 className="text-3xl font-bold mb-6">Secure Checkout</h1>
@@ -210,6 +213,7 @@ const PayNow = () => {
               <div className="font-semibold">{movie.title}</div>
               <div className="text-sm text-gray-400">{timeformat(movie.runtime)}</div>
               <div className="text-sm text-gray-400 mt-2">Show: {time ? new Date(time).toLocaleString() : 'TBD'}</div>
+              <div className="text-sm text-gray-400">Location: {theater?.location || JSON.parse(localStorage.getItem('selectedLocation') || 'null')?.location || 'Unknown'}</div>
             </div>
           </div>
 

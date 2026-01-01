@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
-import { assets, dummyDateTimeData, dummyShowsData } from '../assets/assets';
+import { assets, dummyDateTimeData, dummyShowsData, dummyTheatersData } from '../assets/assets';
 import { ArrowRightIcon, ClockIcon } from 'lucide-react';
 import isoTimeformat from '../../lib/isoTimeformat.js';
 
@@ -38,6 +38,14 @@ const SeatLayout = () => {
     try {
       const params = new URLSearchParams(location.search);
       const timeParam = params.get('time');
+      const theaterParam = params.get('theater');
+      if (theaterParam) {
+        const theaterObj = dummyTheatersData.find(t => t.id === theaterParam);
+        if (theaterObj) {
+          // attach theater info to show for display if needed
+          setShow(prev => ({ ...prev, theater: theaterObj }));
+        }
+      }
       if (timeParam && show.dateTime && show.dateTime[date]) {
         const matched = show.dateTime[date].find((item) => item.time === decodeURIComponent(timeParam));
         if (matched) setSelectedTime(matched);
@@ -123,9 +131,21 @@ const SeatLayout = () => {
               const ticketPrice = 49
               const chosenTime = selectedTime || (show.dateTime[date] && show.dateTime[date][0])
 
+              // capture theater from show (set earlier from query param) or from selectedLocation
+              const theaterId = (show && show.theater && show.theater.id) || (() => {
+                try {
+                  const sl = JSON.parse(localStorage.getItem('selectedLocation') || 'null');
+                  return sl && sl.theaterId ? sl.theaterId : null;
+                } catch (e) { return null }
+              })();
+
+              const theaterObj = dummyTheatersData.find(t => t.id === theaterId) || null;
+
               const booking = {
                 _id: Date.now().toString(),
                 user: { name: 'You' },
+                theaterId: theaterId,
+                theater: theaterObj,
                 show: {
                   _id: show.movie._id || show.movie.id,
                   movie: show.movie,

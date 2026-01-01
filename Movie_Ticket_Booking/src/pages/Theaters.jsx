@@ -1,38 +1,6 @@
 import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-
-const dummyTheatersData = [
-  {
-    id: "t1",
-    name: "QFX Cinemas",
-    location: "Civil Mall, Kathmandu",
-    shows: ["10:30 AM", "1:45 PM", "5:00 PM", "8:30 PM"]
-  },
-  {
-    id: "t2",
-    name: "Big Movies",
-    location: "City Center, Kathmandu",
-    shows: ["11:00 AM", "2:30 PM", "6:15 PM", "9:45 PM"]
-  },
-  {
-    id: "t3",
-    name: "Apple Cinemas",
-    location: "KL Tower, Kathmandu",
-    shows: ["9:45 AM", "1:00 PM", "4:30 PM", "7:45 PM"]
-  },
-  {
-    id: "t4",
-    name: "City Complex Cinemas",
-    location: "Biratnagar, Kathmandu",
-    shows: ["9:45 AM", "1:00 PM", "4:30 PM", "7:45 PM"]
-  },
-  {
-    id: "t5",
-    name: "City  Cinemas",
-    location: "Biratnagar, Kathmandu",
-    shows: ["9:45 AM", "1:00 PM", "4:30 PM", "7:45 PM"]
-  },
-];
+import { dummyTheatersData } from "../assets/assets";
 
 const Theaters = () => {
   const navigate = useNavigate();
@@ -79,6 +47,30 @@ const Theaters = () => {
                   {time}
                 </button>
               ))}
+            </div>
+            <div className="mt-4 flex items-center gap-3">
+              <button
+                onClick={() => {
+                  try {
+                    const loc = { theaterId: theater.id, name: theater.name, location: theater.location };
+                    localStorage.setItem('selectedLocation', JSON.stringify(loc));
+                    alert('Location set to ' + theater.location);
+                    navigate('/movie');
+                  } catch (e) {
+                    console.error('Failed to set location', e);
+                  }
+                }}
+                className="px-3 py-1 text-xs bg-white/5 rounded-full hover:bg-white/10 transition"
+              >
+                Set as my location
+              </button>
+
+              <button
+                onClick={() => navigate(`/movie`)}
+                className="px-3 py-1 text-xs border border-gray-600 rounded-full hover:bg-white/5 transition"
+              >
+                Browse Movies
+              </button>
             </div>
           </div>
         ))}

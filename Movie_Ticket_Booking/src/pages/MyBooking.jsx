@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { dummyBookingData } from '../assets/assets'
+import { dummyBookingData, dummyTheatersData } from '../assets/assets'
 import timeformat from '../../lib/timeformat'
 import { dateFormat } from '../../lib/dateFormat'
 
@@ -15,7 +15,7 @@ const MyBooking = () => {
   useEffect(() => {
     const movieId = location?.state?.movieId
 
-    // merge persisted bookings from localStorage with dummy data
+    // load persisted bookings
     let persisted = []
     try {
       persisted = JSON.parse(localStorage.getItem('bookings') || '[]')
@@ -23,19 +23,28 @@ const MyBooking = () => {
       persisted = []
     }
 
-    const all = [...dummyBookingData, ...persisted]
+    const allBookings = [...dummyBookingData, ...persisted]
 
-    if (movieId) {
-      const filtered = all.filter(b => {
-        const bm = b?.show?.movie
-        return bm?._id === movieId || (bm?.id && bm.id.toString() === movieId.toString()) || b?.show?._id === movieId
-      })
+    // attach theater info
+    const bookingsWithTheater = allBookings.map(b => {
+      const theater = dummyTheatersData.find(
+        t => t.id === b.theaterId
+      )
+      return { ...b, theater }
+    })
 
-      setBookings(filtered)
-    } else {
-      setBookings(all)
-    }
+    // filter by movie if movieId is provided
+    const filtered = movieId
+      ? bookingsWithTheater.filter(b => {
+          const bm = b?.show?.movie
+          return (
+            bm?._id === movieId ||
+            (bm?.id && bm.id.toString() === movieId.toString())
+          )
+        })
+      : bookingsWithTheater
 
+    setBookings(filtered)
     setIsLoading(false)
   }, [location?.state?.movieId])
 
@@ -95,12 +104,14 @@ const MyBooking = () => {
             <div className="p-4 flex flex-col justify-between text-right">
               <div>
                 <p className="text-2xl font-semibold">
-                ${currency}{item.amount }
+                  {currency}{item.amount}
                 </p>
 
                 {!item.isPaid && (
-                  <button onClick={() => navigate('/pay-now', { state: item })}
-                    className="mt-2 px-4 py-1.5 bg-[#f84565] rounded-full text-sm font-medium hover:bg-[#f83256] transition">
+                  <button
+                    onClick={() => navigate('/pay-now', { state: item })}
+                    className="mt-2 px-4 py-1.5 bg-[#f84565] rounded-full text-sm font-medium hover:bg-[#f83256] transition"
+                  >
                     Pay Now
                   </button>
                 )}

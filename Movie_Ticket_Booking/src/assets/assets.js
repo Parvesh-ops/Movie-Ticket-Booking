@@ -369,6 +369,39 @@ export const dummyShowsData = [
     }
 ]
 
+export const dummyTheatersData = [
+  {
+    id: "t1",
+    name: "QFX Cinemas",
+    location: "Civil Mall, Kathmandu",
+    shows: ["10:30 AM", "1:45 PM", "5:00 PM", "8:30 PM"]
+  },
+  {
+    id: "t2",
+    name: "Big Movies",
+    location: "City Center, Kathmandu",
+    shows: ["11:00 AM", "2:30 PM", "6:15 PM", "9:45 PM"]
+  },
+  {
+    id: "t3",
+    name: "Apple Cinemas",
+    location: "KL Tower, Kathmandu",
+    shows: ["9:45 AM", "1:00 PM", "4:30 PM", "7:45 PM"]
+  },
+  {
+    id: "t4",
+    name: "City Complex Cinemas",
+    location: "Biratnagar, Kathmandu",
+    shows: ["9:45 AM", "1:00 PM", "4:30 PM", "7:45 PM"]
+  },
+  {
+    id: "t5",
+    name: "City  Cinemas",
+    location: "Biratnagar, Kathmandu",
+    shows: ["9:45 AM", "1:00 PM", "4:30 PM", "7:45 PM"]
+  },
+];
+
 export const dummyDateTimeData = {
     "2025-07-24": [
         { "time": "2025-07-24T01:00:00.000Z", "showId": "68395b407f6329be2bb45bd1" },
