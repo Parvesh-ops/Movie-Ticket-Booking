@@ -2,25 +2,26 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { dummyShowsData, dummyDateTimeData } from '../assets/assets'
 import { Heart, PlayCircle, StarIcon } from 'lucide-react'
+import { addToFavorites, removeFromFavorites, isFavorite } from '../../lib/favorite'
 import timeformat from '../../lib/timeformat'
 import DateSelect from '../components/DateSelect/DateSelect'
 import MovieCard from '../components/MovieCard/MovieCard'
 
 const MovieDetail = () => {
+  const [favorite, setFavorite] = useState(false);
   const navigate = useNavigate()
   const { id } = useParams()
   const [show, setShow] = useState(null)
 
 
   useEffect(() => {
-    const movie = dummyShowsData.find(m => m._id === id)
-    if (!movie) return
+    const movie = dummyShowsData.find(m => m._id === id);
+    if (!movie) return;
 
-    setShow({
-      movie,
-      dateTime: dummyDateTimeData
-    })
-  }, [id])
+    setShow({ movie, dateTime: dummyDateTimeData });
+    setFavorite(isFavorite(movie._id));
+  }, [id]);
+
 
   if (!show) {
     return (
@@ -96,9 +97,21 @@ const MovieDetail = () => {
               Buy Tickets
             </button>
 
-            <button className="p-3 bg-gray-800 rounded-full hover:bg-gray-700 transition active:scale-95">
-              <Heart size={18} />
+            <button
+              onClick={() => {
+                if (favorite) {
+                  removeFromFavorites(movie._id);
+                } else {
+                  addToFavorites(movie);
+                }
+                setFavorite(!favorite);
+              }}
+              className={`p-3 rounded-full transition active:scale-95
+    ${favorite ? "bg-red-600" : "bg-gray-800 hover:bg-gray-700"}`}
+            >
+              <Heart size={18} fill={favorite ? "white" : "none"} />
             </button>
+
 
           </div>
         </div>
