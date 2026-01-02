@@ -391,13 +391,13 @@ export const dummyTheatersData = [
   {
     id: "t4",
     name: "City Complex Cinemas",
-    location: "Biratnagar, Kathmandu",
+    location: "centrall mall, Biratnagar",
     shows: ["9:45 AM", "1:00 PM", "4:30 PM", "7:45 PM"]
   },
   {
     id: "t5",
     name: "City  Cinemas",
-    location: "Biratnagar, Kathmandu",
+    location: "Bhatbateni, Kathmandu",
     shows: ["9:45 AM", "1:00 PM", "4:30 PM", "7:45 PM"]
   },
 ];
