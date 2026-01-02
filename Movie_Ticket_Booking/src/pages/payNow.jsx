@@ -214,6 +214,7 @@ const PayNow = () => {
               <div className="text-sm text-gray-400">{timeformat(movie.runtime)}</div>
               <div className="text-sm text-gray-400 mt-2">Show: {time ? new Date(time).toLocaleString() : 'TBD'}</div>
               <div className="text-sm text-gray-400">Location: {theater?.location || JSON.parse(localStorage.getItem('selectedLocation') || 'null')?.location || 'Unknown'}</div>
+              <div className="text-sm text-gray-400">Theater: {theater?.name || JSON.parse(localStorage.getItem('selectedLocation') || 'null')?.name || 'Unknown'}</div>
             </div>
           </div>
 
