@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { dummyShowsData } from '../assets/assets'
-import Title from './title'
+import Title from './Title'
 import { dateFormat } from '../../lib/dateFormat'
 
 const ListShows = () => {
