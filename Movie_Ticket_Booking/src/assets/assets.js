@@ -496,44 +496,45 @@ export const dummyDashboardData = {
 }
 
 
+
 export const dummyBookingData = [
-    {
-        "_id": "68396334fb83252d82e17295",
-        "user": { "name": "GreatStack", },
-        "show": {
-            _id: "68352363e96d99513e4221a4",
-            movie: dummyShowsData[0],
-            showDateTime: "2025-06-30T02:30:00.000Z",
-            showPrice: 59,
-        },
-        "amount": 98,
-        "bookedSeats": ["D1", "D2"],
-        "isPaid": false,
+  {
+    _id: "1",
+    user: { name: "Aman Sharma" },
+    show: {
+      _id: "show1",
+      movie: dummyShowsData[0],
+      showDateTime: "2025-06-30T02:30:00.000Z",
+      showPrice: 59,
     },
-    {
-        "_id": "68396334fb83252d82e17295",
-        "user": { "name": "GreatStack", },
-        "show": {
-            _id: "68352363e96d99513e4221a4",
-            movie: dummyShowsData[0],
-            showDateTime: "2025-06-30T02:30:00.000Z",
-            showPrice: 59,
-        },
-        "amount": 49,
-        "bookedSeats": ["A1"],
-        "isPaid": true,
+    amount: 118,
+    bookedSeats: ["D1", "D2"],
+    isPaid: false,
+  },
+  {
+    _id: "2",
+    user: { name: "Ritika Thapa" },
+    show: {
+      _id: "show2",
+      movie: dummyShowsData[1],
+      showDateTime: "2025-07-01T05:30:00.000Z",
+      showPrice: 59,
     },
-    {
-        "_id": "68396334fb83252d82e17295",
-        "user": { "name": "GreatStack", },
-        "show": {
-            _id: "68352363e96d99513e4221a4",
-            movie: dummyShowsData[0],
-            showDateTime: "2025-06-30T02:30:00.000Z",
-            showPrice: 59,
-        },
-        "amount": 147,
-        "bookedSeats": ["A1", "A2", "A3"],
-        "isPaid": true,
+    amount: 59,
+    bookedSeats: ["A1"],
+    isPaid: true,
+  },
+  {
+    _id: "3",
+    user: { name: "Suresh Yadav" },
+    show: {
+      _id: "show3",
+      movie: dummyShowsData[2],
+      showDateTime: "2025-07-02T08:30:00.000Z",
+      showPrice: 59,
     },
+    amount: 177,
+    bookedSeats: ["A1", "A2", "A3"],
+    isPaid: true,
+  },
 ]
