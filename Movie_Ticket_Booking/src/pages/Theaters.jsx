@@ -4,10 +4,10 @@ import { dummyTheatersData } from "../assets/assets";
 
 const Theaters = () => {
   const navigate = useNavigate();
-  const { id, date } = useParams(); // movie id & selected date
+  // const { id, date } = useParams(); // movie id & selected date
 
   return (
-    <div className="min-h-screen text-white px-6 md:px-16 lg:px-40 py-16">
+    <div className="min-h-screen mt-14 text-white px-6 md:px-16 lg:px-40 py-16">
       
       <h1 className="text-2xl font-semibold mb-8">
         Select Theater & Showtime
@@ -26,7 +26,7 @@ const Theaters = () => {
             </div>
 
             {/* SHOW TIMES */}
-            <div className="flex flex-wrap gap-3">
+            {/* <div className="flex flex-wrap gap-3">
               {theater.shows.map((time, index) => (
                 <button
                   key={index}
@@ -47,7 +47,8 @@ const Theaters = () => {
                   {time}
                 </button>
               ))}
-            </div>
+            </div> */}
+            
             <div className="mt-4 flex items-center gap-3">
               <button
                 onClick={() => {

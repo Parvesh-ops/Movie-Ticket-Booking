@@ -20,6 +20,8 @@ import DashboardHome from "./dashboard/dashboardHome";
 import AddShows from "./dashboard/AddShows";
 import ListShows from "./dashboard/ListShows";
 import ListBooking from "./dashboard/ListBooking";
+import AdminNavbar from "./dashboard/AdminNavbar";
+import AdminSidebar from "./dashboard/AdminSidebar";
 
 
 
@@ -48,6 +50,8 @@ const router = createBrowserRouter([
     element: <DashboardLayout />,
     children: [
       { index: true, element: <DashboardHome /> },
+      { path: 'navbar', element: <AdminNavbar /> },
+      { path: 'sidebar', element: <AdminSidebar /> },
       { path: "add-shows", element: <AddShows /> },
       { path: "list-shows", element: <ListShows /> },
       { path: "bookings", element: <ListBooking /> },
