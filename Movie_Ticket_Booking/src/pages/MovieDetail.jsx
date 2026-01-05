@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { dummyShowsData, dummyDateTimeData } from '../assets/assets'
 import { Heart, PlayCircle, StarIcon } from 'lucide-react'
@@ -11,6 +11,7 @@ const MovieDetail = () => {
   const [favorite, setFavorite] = useState(false);
   const navigate = useNavigate()
   const { id } = useParams()
+  const dateSelectRef = useRef(null);
   const [show, setShow] = useState(null)
 
 
@@ -92,10 +93,17 @@ const MovieDetail = () => {
 
 
             <button
-              onClick={() => navigate(`/movie/${movie._id}/${Object.keys(dummyDateTimeData)[0]}`)}
-              className="px-6 py-2.5 bg-[#f84565] rounded-xl font-medium hover:bg-[#f83256] transition">
+              onClick={() => {
+                dateSelectRef.current?.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                });
+              }}
+              className="px-6 py-2.5 bg-[#f84565] rounded-xl font-medium hover:bg-[#f83256] transition"
+            >
               Buy Tickets
             </button>
+
 
             <button
               onClick={() => {
@@ -141,7 +149,10 @@ const MovieDetail = () => {
       </div>
 
       {/* DATE SELECTOR */}
-      <DateSelect dateTime={show.dateTime} id={movie._id} />
+      <div ref={dateSelectRef} className="mt-16">
+        <DateSelect dateTime={show.dateTime} id={movie._id} />
+      </div>
+
 
       {/* SIMILAR MOVIES - TO BE IMPLEMENTED */}
       <p className='text-lg font-medium mt-20 mb-8'>You May Also Like</p>
