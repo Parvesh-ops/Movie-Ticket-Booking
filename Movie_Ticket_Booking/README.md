@@ -12,6 +12,13 @@ Users can browse movies, select showtimes, choose seats visually, and complete b
 
 ---
 
+## 📸 Screenshots
+![image alt](https://github.com/Parvesh-ops/Movie-Ticket-Booking/blob/27e87fab9ec3cd58cc15b6ffce0233bc30ff9052/Movie_Ticket_Booking/Screenshot-70.jpg)
+![image alt](https://github.com/Parvesh-ops/Movie-Ticket-Booking/blob/ef5b6ad5b0f6fb0b9aead5cd4fb5230f6b59dcfa/Movie_Ticket_Booking/Screenshot-73.jpg)
+![image alt](https://github.com/Parvesh-ops/Movie-Ticket-Booking/blob/52b654fb1898f09eb91403af3fbf426a598d6d4a/Movie_Ticket_Booking/Screenshot-77.jpg)
+
+---
+
 ## 🛠️ Tech Stack
 
 - ⚛️ **React.js** – Component-based UI
@@ -52,9 +59,7 @@ Users can browse movies, select showtimes, choose seats visually, and complete b
 
 ---
 
-## 📸 Screenshots
-![image alt](https://github.com/Parvesh-ops/Movie-Ticket-Booking/blob/27e87fab9ec3cd58cc15b6ffce0233bc30ff9052/Movie_Ticket_Booking/Screenshot-70.jpg)
-![image alt] (https://github.com/Parvesh-ops/Movie-Ticket-Booking/blob/ef5b6ad5b0f6fb0b9aead5cd4fb5230f6b59dcfa/Movie_Ticket_Booking/Screenshot-73.jpg)
+
 ---
 
 
