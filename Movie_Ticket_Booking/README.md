@@ -1,69 +1,73 @@
-# Movie Ticket Booking
+# 🎬 Movie Ticket Booking Application
 
-A responsive single-page application for browsing movies, selecting showtimes, and booking seats. Built with React and Vite, this project includes a simple user flow for searching movies, choosing showtimes, selecting seats, and completing a booking. An admin dashboard is provided for adding shows and viewing bookings.
+A **responsive single-page movie ticket booking application** built with **React + Vite**, designed to simulate a real-world cinema booking experience.  
+Users can browse movies, select showtimes, choose seats visually, and complete bookings, while admins can manage shows and view bookings.
 
-## Features
+> 🚀 Built as a React Developer / Intern project to demonstrate modern frontend skills, UI/UX thinking, and component-based architecture.
 
-- Browse movies with posters, ratings, and trailers
-- View detailed movie pages (description, cast, runtime)
-- Choose date and showtime, then pick seats visually
-- Save favorite movies and view personal bookings
-- Admin dashboard to add shows and list bookings
+---
 
-## Tech Stack
+## 🌟 Live Preview
+ https://movie-booking-app.vercel.app
 
-- React + Vite
-- Plain CSS for styling (component + global styles)
-- Utility helpers in `lib/` for date/time formatting
+---
 
-## Getting Started
+## 🛠️ Tech Stack
 
-Prerequisites: Node.js 16+ and npm (or yarn/pnpm)
+- ⚛️ **React.js** – Component-based UI
+- ⚡ **Vite** – Fast development & build tool
+- 🎨 **Tailwind CSS** – Utility-first styling
+- 🎯 **Plain CSS** – Custom styling in `app.css`
+- 🧭 **React Router** – SPA navigation
+- 📦 **JavaScript (ES6+)**
 
-Install dependencies
+---
 
-```bash
-npm install
-```
+## ✨ Features
 
-Run development server
+### 👤 User Features
+- 🎥 Browse movies with posters, ratings, and trailers
+- 📄 View detailed movie information (description, cast, runtime)
+- 🗓️ Select show date and time
+- 💺 Interactive seat selection layout
+- ❤️ Save favorite movies
+- 🎟️ View personal booking history
+- 📱 Fully responsive for mobile, tablet, and desktop
 
-```bash
-npm run dev
-```
+### 🛠️ Admin Dashboard
+- ➕ Add new movie shows
+- 📋 View all bookings
+- 🧩 Separate admin layout for better structure
 
-Build for production
+---
 
-```bash
-npm run build
-```
+## 🧭 User Flow
 
-Preview production build locally
+1. Browse movies on the home page  
+2. Open movie details and select a showtime  
+3. Choose seats visually  
+4. Confirm booking  
+5. View bookings in **My Bookings**  
+6. Admin manages shows and bookings from dashboard  
 
-```bash
-npm run preview
-```
+---
 
-## Project Structure (overview)
+## 📸 Screenshots
 
-- `index.html` — HTML entry
-- `src/main.jsx` — App bootstrapping and router
-- `src/App.jsx` — Root app
-- `src/pages/` — Page routes (Home, Movie, MovieDetail, SeatLayout, MyBooking, Favorite, etc.)
-- `src/components/` — Reusable components (Header, Footer, MovieCard, TrailersSection, DateSelect, etc.)
-- `src/dashboard/` — Admin pages and layout
-- `lib/` — Helper utilities (date/time formatting, converters)
+---
 
-## Notable Files
 
-- `src/pages/Home.jsx` — Home page and featured sections
-- `src/pages/MovieDetail.jsx` — Movie detail and showtime selection
-- `src/pages/SeatLayout.jsx` — Seat map and selection logic
-- `src/dashboard/AddShows.jsx` — Admin interface for creating shows
+👨‍💻 Learning Outcomes
 
-## Notes & Next Steps
+Strong understanding of React component architecture
 
-- No external API keys are required by default. If you integrate a backend or third-party API, add `.env` instructions here.
-- To add screenshots or a demo GIF, place assets in `public/` and reference them in this README.
+State management for seat selection logic
 
-If you'd like, I can add CI badges, a `CONTRIBUTING.md`, or a short demo image next.
+SPA routing using React Router
+
+Responsive UI with Tailwind CSS
+
+Clean folder structure and reusable components
+
+Admin/User role-based UI separation
+
