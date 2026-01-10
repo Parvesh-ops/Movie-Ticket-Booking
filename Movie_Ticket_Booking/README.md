@@ -14,59 +14,58 @@ Users can browse movies, select showtimes, choose seats visually, and complete b
 
 ## 🛠️ Tech Stack
 
-- ⚛️ **React.js** – Component-based UI
-- ⚡ **Vite** – Fast development & build tool
-- 🎨 **Tailwind CSS** – Utility-first styling
-- 🎯 **Plain CSS** – Custom styling in `app.css`
-- 🧭 **React Router** – SPA navigation
-- 📦 **JavaScript (ES6+)**
+- React + Vite
+- Plain CSS for styling (component + global styles)
+- Utility helpers in `lib/` for date/time formatting
 
----
+## Getting Started
 
-## ✨ Features
+Prerequisites: Node.js 16+ and npm (or yarn/pnpm)
 
-### 👤 User Features
-- 🎥 Browse movies with posters, ratings, and trailers
-- 📄 View detailed movie information (description, cast, runtime)
-- 🗓️ Select show date and time
-- 💺 Interactive seat selection layout
-- ❤️ Save favorite movies
-- 🎟️ View personal booking history
-- 📱 Fully responsive for mobile, tablet, and desktop
+Install dependencies
 
-### 🛠️ Admin Dashboard
-- ➕ Add new movie shows
-- 📋 View all bookings
-- 🧩 Separate admin layout for better structure
+```bash
+npm install
+```
 
----
+Run development server
 
-## 🧭 User Flow
+```bash
+npm run dev
+```
 
-1. Browse movies on the home page  
-2. Open movie details and select a showtime  
-3. Choose seats visually  
-4. Confirm booking  
-5. View bookings in **My Bookings**  
-6. Admin manages shows and bookings from dashboard  
+Build for production
 
----
+```bash
+npm run build
+```
 
-## 📸 Screenshots
+Preview production build locally
 
----
+```bash
+npm run preview
+```
 
+## Project Structure (overview)
 
-👨‍💻 Learning Outcomes
+- `index.html` — HTML entry
+- `src/main.jsx` — App bootstrapping and router
+- `src/App.jsx` — Root app
+- `src/pages/` — Page routes (Home, Movie, MovieDetail, SeatLayout, MyBooking, Favorite, etc.)
+- `src/components/` — Reusable components (Header, Footer, MovieCard, TrailersSection, DateSelect, etc.)
+- `src/dashboard/` — Admin pages and layout
+- `lib/` — Helper utilities (date/time formatting, converters)
 
-Strong understanding of React component architecture
+## Notable Files
 
-State management for seat selection logic
+- `src/pages/Home.jsx` — Home page and featured sections
+- `src/pages/MovieDetail.jsx` — Movie detail and showtime selection
+- `src/pages/SeatLayout.jsx` — Seat map and selection logic
+- `src/dashboard/AddShows.jsx` — Admin interface for creating shows
 
-SPA routing using React Router
+## Notes & Next Steps
 
-Responsive UI with Tailwind CSS
+- No external API keys are required by default. If you integrate a backend or third-party API, add `.env` instructions here.
+- To add screenshots or a demo GIF, place assets in `public/` and reference them in this README.
 
-Clean folder structure and reusable components
-
-Admin/User role-based UI separation
+If you'd like, I can add CI badges, a `CONTRIBUTING.md`, or a short demo image next.
