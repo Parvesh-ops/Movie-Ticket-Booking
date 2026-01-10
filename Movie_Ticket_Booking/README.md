@@ -53,7 +53,7 @@ Users can browse movies, select showtimes, choose seats visually, and complete b
 ---
 
 ## 📸 Screenshots
-
+![image alt](https://github.com/Parvesh-ops/Movie-Ticket-Booking/blob/27e87fab9ec3cd58cc15b6ffce0233bc30ff9052/Movie_Ticket_Booking/Screenshot-70.jpg)
 ---
 
 
