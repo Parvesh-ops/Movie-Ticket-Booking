@@ -16,7 +16,7 @@ import Theaters from "./pages/Theaters";
 
 // Dashboard Routes
 import DashboardLayout from "./dashboard/DashboardLayout";
-import DashboardHome from "./dashboard/dashboardHome";
+import DashboardHome from "./dashboard/DashboardHome";
 import AddShows from "./dashboard/AddShows";
 import ListShows from "./dashboard/ListShows";
 import ListBooking from "./dashboard/ListBooking";
