@@ -7,7 +7,7 @@ import {
 } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 import { dummyDashboardData } from '../assets/assets'
-import Title from './title'
+import Title from './Title'
 import { dateFormat } from '../../lib/dateFormat'
 
 const DashboardHome = () => {
