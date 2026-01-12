@@ -8,7 +8,7 @@ Users can browse movies, select showtimes, choose seats visually, and complete b
 ---
 
 ## 🌟 Live Preview
- https://movie-booking-app.vercel.app
+[ https://movie-booking-app.vercel.app](https://movie-ticket-booking-pied-beta.vercel.app/)
 
 ---
 
@@ -60,8 +60,6 @@ Users can browse movies, select showtimes, choose seats visually, and complete b
 
 ---
 
-
----
 
 
 👨‍💻 Learning Outcomes

@@ -23,9 +23,6 @@ import ListBooking from "./dashboard/ListBooking";
 import AdminNavbar from "./dashboard/AdminNavbar";
 import AdminSidebar from "./dashboard/AdminSidebar";
 
-
-
-
 const router = createBrowserRouter([
   {
     path: "/",
