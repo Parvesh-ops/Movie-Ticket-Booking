@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Search, Menu, X } from "lucide-react";
+import { useClerk, useUser, UserButton, SignedIn, SignedOut, SignInButton } from "@clerk/clerk-react";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const { user } = useUser();
+  const { openSignIn } = useClerk();
 
   const navLinkClass = ({ isActive }) =>
-    ` px-4 py-2 rounded-full text-sm transition
-     ${
-       isActive
-         ? "bg-gray-800 text-white"
-         : "text-gray-400 hover:text-white"
-     }`;
+    `px-4 py-2 rounded-full text-sm transition ${
+      isActive ? "bg-gray-800 text-white" : "text-gray-400 hover:text-white"
+    }`;
 
   return (
-    <header className="fixed top-0 left-0 w-full z-5 backdrop-blur-md border-b border-gray-800">
+    <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-md border-b border-gray-800">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
 
         {/* Logo */}
@@ -23,7 +23,7 @@ const Header = () => {
         </NavLink>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-2 bg-[#14141] px-2 py-1 rounded-full">
+        <nav className="hidden md:flex items-center gap-2 bg-[#141414] px-2 py-1 rounded-full">
           <NavLink to="/" className={navLinkClass}>Home</NavLink>
           <NavLink to="/movie" className={navLinkClass}>Movies</NavLink>
           <NavLink to="/theatres" className={navLinkClass}>Theatres</NavLink>
@@ -37,10 +37,19 @@ const Header = () => {
             <Search size={20} />
           </button>
 
-          {/* Login (hide on very small if needed) */}
-          <button className="hidden sm:block bg-[#F84565] hover:bg-[#D63854] text-white text-sm px-5 py-2 rounded-full transition">
-            Log in
-          </button>
+          {/* Desktop Auth */}
+          <div className="hidden sm:block">
+            {user ? (
+              <UserButton afterSignOutUrl="/" />  // Shows profile image + dropdown
+            ) : (
+              <button
+                onClick={() => openSignIn()}
+                className="bg-[#F84565] hover:bg-[#D63854] text-white text-sm px-5 py-2 rounded-full transition"
+              >
+                Log in
+              </button>
+            )}
+          </div>
 
           {/* Mobile Menu Button */}
           <button
@@ -79,9 +88,19 @@ const Header = () => {
               Favorite
             </NavLink>
 
-            <button className="w-full mt-3 bg-[#F84565] hover:bg-[#D63854] text-white py-2 rounded-lg">
-              Log in
-            </button>
+            {/* Mobile Auth */}
+            <div className="mt-3">
+              {user ? (
+                <UserButton afterSignOutUrl="/" />  // Mobile user avatar
+              ) : (
+                <button
+                  onClick={() => { openSignIn(); setOpen(false); }}
+                  className="w-full bg-[#F84565] hover:bg-[#D63854] text-white py-2 rounded-lg transition"
+                >
+                  Log in
+                </button>
+              )}
+            </div>
           </nav>
         </div>
       )}
