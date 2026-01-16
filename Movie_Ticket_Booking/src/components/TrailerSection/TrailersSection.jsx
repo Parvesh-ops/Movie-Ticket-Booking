@@ -31,15 +31,15 @@ const TrailersSection = () => {
   };
 
   return (
-    <div className="px-6 md:px-16 lg:px-24 xl:px-44 py-20 overflow-hidden ">
+    <div className="px-4 sm:px-6 md:px-16 lg:px-24 xl:px-44 py-16 sm:py-20 overflow-hidden">
       {/* Section Title */}
-      <p className="text-gray-300 font-medium text-lg max-w-240 mx-auto">
+      <p className="text-gray-300 font-medium text-lg text-center sm:text-left">
         Trailer
       </p>
 
       {/* Player */}
       <div className="relative mt-6 w-full max-w-4xl mx-auto">
-        <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+        <div className="relative w-full aspect-video">
           <iframe
             src={`https://www.youtube.com/embed/${currentTrailer.videoId}`}
             title="YouTube video player"
@@ -52,17 +52,19 @@ const TrailersSection = () => {
       </div>
 
       {/* Thumbnails */}
-      <div className="flex gap-4 mt-8 mx-auto max-w-4xl overflow-x-auto scrollbar-hide">
+      <div className="flex gap-3 sm:gap-4 mt-6 sm:mt-8 mx-auto max-w-full overflow-x-auto scrollbar-hide py-2">
         {dummyTrailers.map((trailer, idx) => (
           <img
             key={idx}
             src={trailer.image}
             alt={`Trailer ${idx + 1}`}
-            className={`h-24 w-36 shrink-0 rounded-lg cursor-pointer border-2 transition-transform duration-300 ${
-              currentTrailer.videoId === trailer.videoId
+            className={`
+              h-20 sm:h-24 md:h-28 w-28 sm:w-36 md:w-44 shrink-0 rounded-lg cursor-pointer border-2 transition-transform duration-300
+              ${currentTrailer.videoId === trailer.videoId
                 ? 'border-pink-500 scale-105'
                 : 'border-transparent hover:scale-105'
-            }`}
+              }
+            `}
             onClick={() => handleThumbnailClick(trailer)}
           />
         ))}
